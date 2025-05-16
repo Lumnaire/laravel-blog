@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         // $this->call([
         //     PostSeeder::class,
         // ]);
-        //This will run the PostSeeder
+        //This will also run the PostSeeder
     }
 
 
