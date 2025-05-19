@@ -35,7 +35,7 @@
                                 </h5>
                             </a>
                             <div class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                                {{ $post->content }}
+                                {{ Str::words($post->content, 20) }}
                             </div>
                             <a href="#"
                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -48,7 +48,7 @@
                             </a>
                         </div>
                         <a href="#">
-                            <img class="rounded-r-lg w-48 h-48 object-cover"
+                            <img class="rounded-r-lg w-48 h-full object-cover"
                                 src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" />
                         </a>
                     </div>
@@ -56,6 +56,7 @@
 
             </div>
 
+            {{ $posts->onEachSide(1)->links() }}
 
         </div>
     </div>
