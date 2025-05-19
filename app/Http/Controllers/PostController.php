@@ -16,11 +16,13 @@ class PostController extends Controller
 
 
         $categories = Category::get();
+        $posts = Post::orderBy('created_at', 'DESC')->get();
         // dump($categories);
         // dd($categories);
         // return view('dashboard', compact('categories'));
         return view('dashboard', [
-            'categories' => $categories
+            'categories' => $categories,
+            'posts' => $posts,
         ]);
     }
 
