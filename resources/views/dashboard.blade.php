@@ -25,7 +25,7 @@
             </div>
 
             <div class="mt-8 text-gray-900">
-                @foreach ($posts as $post)
+                @forelse ($posts as $post)
                     <div class="flex bg-white border border-gray-200 rounded-lg shadow-sm mb-8">
 
                         <div class="p-5 flex-1">
@@ -52,7 +52,11 @@
                                 src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" />
                         </a>
                     </div>
-                @endforeach
+                @empty
+                    <div>
+                        <p class="text-gray-600 text-center py-16">No posts found.</p>
+                    </div>
+                @endforelse
 
             </div>
 
