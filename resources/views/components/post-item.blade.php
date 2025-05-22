@@ -1,3 +1,3 @@
 <div>
-    <!-- Simplicity is the essence of happiness. - Cedric Bledsoe -->
+    <!-- No surplus words or unnecessary actions. - Marcus Aurelius -->
 </div>
