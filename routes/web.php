@@ -10,6 +10,10 @@ Route::get('/', function () {
 
 Route::get('/', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/post/create', [PostController::class, 'create'])
+    ->middleware(['auth', 'verified'])
+    ->name('post.create');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
