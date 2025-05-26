@@ -8,11 +8,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', [PostController::class, 'index'])
+        // ->middleware(['auth', 'verified']) you dont need this because of the middleware
+        ->name('dashboard');
 
-Route::get('/post/create', [PostController::class, 'create'])
-    ->middleware(['auth', 'verified'])
-    ->name('post.create');
+    Route::get('/post/create', [PostController::class, 'create'])
+        // ->middleware(['auth', 'verified'])
+        ->name('post.create');
+
+    Route::post('/post', [PostController::class, 'store'])
+        ->name('post.store');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
