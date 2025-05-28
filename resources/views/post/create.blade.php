@@ -5,8 +5,20 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
                 <form action="{{ route('post.store') }}" method="post">
 
-                    <!-- Title -->
+                    <!-- Image -->
                     <div>
+                        <x-input-label for="image" :value="__('Choose Image')" />
+                        <x-text-input id="image" class="block mt-1 w-full" type="file" name="image"
+                            :value="old('image')" required autofocus autocomplete="username" />
+                        <x-input-error :messages="$errors->get('image')" class="mt-2" />
+                    </div>
+
+                 
+                  
+
+
+                    <!-- Title -->
+                    <div class="mt-4">
                         <x-input-label for="title" :value="__('Title')" />
                         <x-text-input id="title" class="block mt-1 w-full" type="text" name="title"
                             :value="old('title')" required autofocus autocomplete="username" />
@@ -20,6 +32,10 @@
                             :value="old('content')" required autofocus></x-input-textarea>
                         <x-input-error :messages="$errors->get('content')" class="mt-2" />
                     </div>
+
+                    <x-primary-button class="mt-4">
+                        Submit
+                    </x-primary-button>
                 </form>
             </div>
         </div>
