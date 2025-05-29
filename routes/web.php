@@ -17,7 +17,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // ->middleware(['auth', 'verified'])
         ->name('post.create');
 
-    Route::post('/post', [PostController::class, 'store'])
+    Route::post('/post/create', [PostController::class, 'store'])
         ->name('post.store');
 });
 

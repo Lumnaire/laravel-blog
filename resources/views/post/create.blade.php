@@ -3,19 +3,17 @@
     <div class="py-4">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
-                <form action="{{ route('post.store') }}" method="post">
-
+                <form action="{{ route('post.store') }}" enctype="multipart/form-data" method="post">
+                     @csrf
                     <!-- Image -->
                     <div>
                         <x-input-label for="image" :value="__('Choose Image')" />
                         <x-text-input id="image" class="block mt-1 w-full" type="file" name="image"
                             :value="old('image')" required autofocus autocomplete="username" />
                         <x-input-error :messages="$errors->get('image')" class="mt-2" />
-                    </div>
+                    </div> 
 
                  
-                  
-
 
                     <!-- Title -->
                     <div class="mt-4">
@@ -23,6 +21,22 @@
                         <x-text-input id="title" class="block mt-1 w-full" type="text" name="title"
                             :value="old('title')" required autofocus autocomplete="username" />
                         <x-input-error :messages="$errors->get('title')" class="mt-2" />
+                    </div>
+
+                     <!-- Catagory -->
+                    <div class="mt-4">
+                        <x-input-label for="category_id" :value="__('Catagory')" />
+                        <select name="category_id" id="category_id" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full">
+                            <option value="">
+                                Select a Category
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </option>
+                        </select>
+                        <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
                     </div>
 
                     <!-- Content -->
