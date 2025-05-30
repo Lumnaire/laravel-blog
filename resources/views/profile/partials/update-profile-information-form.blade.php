@@ -66,6 +66,15 @@
             @endif
         </div>
 
+           <!-- Bio -->
+                    <div class="mt-4">
+                        <x-input-label for="bio" :value="__('Bio')" />
+                        <x-input-textarea id="bio" class="block mt-1 w-full" type="text" name="bio"
+                             autofocus> {{ old('bio') }} </x-input-textarea>
+                        <x-input-error :messages="$errors->get('bio')" class="mt-2" />
+                    </div>
+
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
