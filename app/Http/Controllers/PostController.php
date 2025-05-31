@@ -50,7 +50,7 @@ class PostController extends Controller
         // dd($data);
 
         $image = $data['image'];
-        unset($data['image']);
+        // unset($data['image']);
         $data['user_id'] = Auth::id();
         $data['slug'] = Str::slug($data['title']);
 
