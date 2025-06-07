@@ -5,6 +5,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
                 <h1 class="text-2xl mb-4">{{ $post->title }}</h1>
                 <div class="flex gap-4 items-center">
+                    {{-- User Avatar --}}
                     @if ($post->user->image)
                         <img src="{{ $post->user->imageUrl() }}" alt="{{ $post->user->name }}"
                             class="w-16 h-16 rounded-full">
@@ -23,8 +24,22 @@
                             &middot
                             {{ $post->created_at->format('M d, Y') }}
                         </div>
-                    </div>
+                  
+                 
                 </div>
+                  </div>
+                    {{-- Clap Section --}}
+                    <div class="mt-8 border-t border-b">
+                        Some content
+                    </div>
+
+                    {{-- Post Image Section --}}
+                    <div class="mt-8">
+                        <img src="{{ $post->imageUrl() }}" alt="{{ $post->title }}" class="w-full h-64">
+                        <div class="mt-4">
+                            {{ $post->content }}
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
