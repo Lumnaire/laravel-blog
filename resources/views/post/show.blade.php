@@ -8,43 +8,45 @@
                     {{-- User Avatar --}}
                     <x-user-avatar :user="$post->user" />
                     <div>
-                        <div class="flex gap-2">
-                               <a href="{{ route('profile.show', $post->user) }}" class="hover:underline">{{ $post->user->name }}</a>
-                               &middot;
-                               <a href="" class="text-emerald-500">Follow</a>
-                        </div>
-                     
+                        <x-follow-ctr :user="$post->user" class="flex gap-2">
+                            <a href="{{ route('profile.show', $post->user) }}"
+                                class="hover:underline">{{ $post->user->name }}</a>
+                            &middot;
+                            <button href="" x-text="following ? 'Unfollow' : 'Follow'" :class="following ? 'text-red-600' : 'text-emerald-600'" @click="follow()"></button>
+                        </x-follow-ctr>
+
+
                         <div class="flex gap-2 text-gray-500 text-sm">
                             {{ $post->readTime() }} min read
                             &middot
                             {{ $post->created_at->format('M d, Y') }}
                         </div>
-                  
-                 
+
+
+                    </div>
                 </div>
-                  </div>
-                    {{-- Clap Section --}}
-                    <x-clap-button />
-                    {{-- Clap Section --}}
+                {{-- Clap Section --}}
+                <x-clap-button />
+                {{-- Clap Section --}}
 
 
-                    {{-- Post Image Section --}}
-                    <div class="mt-8">
-                        <img src="{{ $post->imageUrl() }}" alt="{{ $post->title }}" class="w-full h-64">
-                        <div class="mt-4">
-                            {{ $post->content }}
-                        </div>
+                {{-- Post Image Section --}}
+                <div class="mt-8">
+                    <img src="{{ $post->imageUrl() }}" alt="{{ $post->title }}" class="w-full h-64">
+                    <div class="mt-4">
+                        {{ $post->content }}
                     </div>
+                </div>
 
-                    <div class="mt-8">
-                        <span class="px-4 py-2 bg-gray-300 rounded-xl">
-                                {{ $post->category->name }}
-                        </span>
-                    </div>
+                <div class="mt-8">
+                    <span class="px-4 py-2 bg-gray-300 rounded-xl">
+                        {{ $post->category->name }}
+                    </span>
+                </div>
 
-                      {{-- Clap Section --}}
-                      <x-clap-button />
-                      {{-- Clap Section --}}
+                {{-- Clap Section --}}
+                <x-clap-button />
+                {{-- Clap Section --}}
             </div>
         </div>
     </div>
